@@ -55,12 +55,12 @@
     </div>
     @endforeach
 </div>
-
-    <div class="offset-md-5">
+</div>
+    <div class="offset-md-5 mt-3">
         {{ $posts->links() }}
     </div>
   
-</div>
+
 </div>
 <style>
   .f1{

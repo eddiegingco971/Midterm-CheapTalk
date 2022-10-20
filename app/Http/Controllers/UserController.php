@@ -10,7 +10,7 @@ class UserController extends Controller
 
     public function index()
     {
-        $users = User::whereHas('posts')->with('posts')->orderBy('name')->paginate(6);
+        $users = User::whereHas('posts')->with('posts')->orderBy('name')->simplePaginate(6);
         return view('pages.authors', compact('users'));
     }
 }

@@ -26,15 +26,16 @@
      
     </div>
     @endforeach
+  </div>
     <div class="offset-md-5 mt-3">
         {{ $users->links() }}
     </div>
-</div>
+
 </div>
 
 <style>
   #pf1{
-    height: 150px;
+    height: 180px;
     width: 310px;
   }
   .f1{
