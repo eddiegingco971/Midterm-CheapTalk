@@ -29,15 +29,5 @@ class Post extends Model
         return Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('m-d-Y');
     }
 
-    public function scopeSearch($query, $terms)
-    {
-        collect(explode(" ", $terms))
-        ->filter()
-        ->each(function($term) use($query){
-            $term = '%'. $term . '%';
-
-            $query->where('name', 'LIKE', $term)
-                ->orWhere('category','LIKE', $term);
-        });
-    }
+  
 }

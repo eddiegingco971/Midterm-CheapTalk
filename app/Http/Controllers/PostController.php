@@ -6,14 +6,42 @@ use App\Models\Category;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Livewire\WithPagination;
 
 class PostController extends Controller
 {
- 
-    public function all()
-    {   
-        $posts = Post::orderBy('created_at', 'desc')->simplePaginate(6);
-        return view('pages.home', compact('posts'));
+
+    // public $search, $category='all';
+    // use WithPagination;
+    // protected $paginationTheme = 'bootstrap';
+
+    // public function loadCategory() {
+    //     $query = Category::orderBy('created_at', 'desc')
+    //         ->search($this->search);
+
+    //    if($this->category!='all') {
+    //     $query->where('category', $this->category);
+    //    }
+
+    //    $categories = $query->paginate(4);
+
+    //    return  compact('categories');
+    // }
+
+    public function all(Request $request)
+    {
+        $posts = Post::where([
+            ['created_at', '!=' , null],[
+                function($query) use($request){
+                    if(($post = $request->post)){
+                        $query->orWhere('post', 'LIKE' ,  '%' . $post . '%')
+                       ->orWhere('category_id', 'LIKE' ,  '%' . $post . '%')
+                        ->get();
+                    }
+                }
+            ]
+        ])->orderBy('created_at', 'desc')->simplePaginate(6);
+        return view('pages.home', compact('posts'),['posts'=>$posts]);
     }
 
     public function byCategory(Category $category)

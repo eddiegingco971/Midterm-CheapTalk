@@ -5,15 +5,24 @@
 <div class="container">
   <div class="row">
       <div class="col">
-          <select class="form-select" name="gender">
-              <option value="all">All</option>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-          </select>
+        <select class="form-select" id="category" name="category" wire:model.lazy='category'>
+            <option value="all">All</option>
+            <option value="Adventure">Adventure</option>
+            <option value="Business">Business</option>
+            <option value="Comedy">Comedy</option>
+            <option value="Drama">Drama</option>
+            <option value="Horror">Horror</option>
+            <option value="Politics">Politics</option>
+            <option value="Religion">Religion</option>
+            <option value="Romance">Romance</option>
+        </select>
       </div>
 
       <div class="col">
-          <input class="form-control" placeholder="Search" type="search"> 
+        {{-- <input type="text" class="form-control" placeholder="Search" wire:model="search">  --}}
+        <form action="{{route('home')}}" method="GET" role="search">
+            <input class="form-control" name="post" id="post" type="text" placeholder="Search">
+        </form>
       </div>
   </div>
 
