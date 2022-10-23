@@ -64,13 +64,13 @@
       background-color: lightpink; 
   }
   .card .f1:hover{
-      background-color: red;
+      background-color: rgb(224, 149, 149);
   }
   .m1{
       background-color: lightblue;
   }
   .card .m1:hover{
-      background-color: blue;
+        background-color: rgb(70, 70, 248);
   }
 </style>
 @endsection

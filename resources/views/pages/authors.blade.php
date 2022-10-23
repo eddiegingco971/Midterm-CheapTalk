@@ -13,8 +13,9 @@
 
             <a href="{{url('authors', ['id'=>$user->id])}}">
               <div class="card" >
-                <div class="card-body" >
-                  <img class="card" id="pf1" src="{{$user->gender === 'female' ? asset('img/female.jpg') : asset('img/male.jpg')}}" alt="photo">
+                <div class="card-body bg-secondary">
+                  <img class="card" id="pf1" src="{{$user->gender === 'female' ? asset('img/female.jpg') : asset('img/male.jpg')}}" alt="photo"
+                  style="border-radius:50%;">
                 </div>
               </div>
             </a>
@@ -35,21 +36,22 @@
 
 <style>
   #pf1{
-    height: 180px;
-    width: 310px;
+    height: 210px;
+    width: 300px;
+    margin-left: 5px;
   }
-  .f1{
+.f1{
       background-color: lightpink; 
   }
   .card .f1:hover{
-      background-color: red;
+      background-color: rgb(224, 149, 149);
   }
   .m1{
       background-color: lightblue;
   }
   .card .m1:hover{
-      background-color: blue;
-  }
+        background-color: rgb(70, 70, 248);
+    }
 </style>
     
 @endsection

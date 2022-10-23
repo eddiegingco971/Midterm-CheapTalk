@@ -1,11 +1,11 @@
-<nav class="navbar navbar-expand-lg text-info bg-primary mb-2 p-1">
+<nav class="navbar navbar-expand-lg text-info bg-primary mb-2 p-1" id="nv1">
     <div class="container-fluid">
       <a class="navbar-brand" href="/"><h1>Student App</h1></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav ms-auto">
+        <div class="navbar-nav ms-auto" id="n1">
           @if (auth()->check())
           <a class="nav-link" href="/">Home</a>
           <a class="nav-link" href="/home">Posts</a>
@@ -60,3 +60,13 @@
       </div>
     </div>
   </nav>
+
+<style>
+  #n1 :hover{
+    color: yellow;
+    font-weight: bold;
+  }
+  #nv1{
+    background-image: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet);
+  }
+</style>

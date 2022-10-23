@@ -31,7 +31,7 @@
         <h3>Recent Posts</h3>
     </div>
 
-    <div class="row" style="height: 100vh; overflow: auto">
+    <div class="row" style="height: 105vh; overflow: auto">
     @foreach ($posts as $post)
     <div class="col-md-4 mt-1">
     
@@ -92,13 +92,13 @@
         background-color: lightpink; 
     }
     .card .f1:hover{
-        background-color: red;
+        background-color: rgb(224, 149, 149);
     }
     .m1{
         background-color: lightblue;
     }
     .card .m1:hover{
-        background-color: blue;
+        background-color: rgb(70, 70, 248);
     }
 </style>
 @endsection
