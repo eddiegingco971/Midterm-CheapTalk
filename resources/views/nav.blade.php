@@ -66,7 +66,7 @@
     color: yellow;
     font-weight: bold;
   }
-  #nv1{
+  /* #nv1{
     background-image: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet);
-  }
+  } */
 </style>
