@@ -3,7 +3,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-4 offset-md-4">
-            
+
             @if (session('message'))
                <div class="alert alert-success">
                     {{session('message')}}
@@ -14,18 +14,18 @@
             <div class="alert alert-danger">
                  {{session('error')}}
              </div>
-            @endif 
+            @endif
 
             <div class="card mt-3">
 
-                <div class="card-header bg-info text-white text-center">
+                <div class="card-header text-white text-center" id="nv1">
                     <h3 class="card-title">Login</h3>
 
                     </div>
                     <div class="card-body">
                         <form action="{{url('/login')}}" method="post">
                             {{ csrf_field() }}
-                            
+
                             <div class="mb-3">
                                 <label for="email">Email</label>
                                 <input type="email" name="email" id="email" class="form-control" placeholder="sample@gmail.com">
@@ -50,7 +50,7 @@
 
                             </div>
 
-                            
+
                         </form>
                     </div>
                 </div>
@@ -58,5 +58,9 @@
         </div>
     </div>
 
-
+<style>
+#nv1{
+    background-image: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet);
+  }
+</style>
 @endsection

@@ -7,37 +7,74 @@
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav ms-auto" id="n1">
           @if (auth()->check())
-          <a class="nav-link" href="/">Home</a>
-          <a class="nav-link" href="/home">Posts</a>
+            @if (auth()->user()->hasRole('admin'))
+            <a class="nav-link" href="/">Home</a>
+            <a class="nav-link" href="/home">Posts</a>
 
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Categories
-            </a>
-            <ul class="dropdown-menu">
-              @foreach (App\Models\Category::whereHas('posts')->get()->sortBy('category') as $category)
-              <li><a class="dropdown-item" href="{{url('categories', ['id'=>$category->id])}}">{{$category->category}}</a></li> 
-              @endforeach
-            </ul>
-          </li>
-          <a class="nav-link" href="/authors">Authors</a>
-          <a class="nav-link" href="/dashboard">Dashboard</a>
-          <a class="nav-link" href="/logs">Logs</a>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Categories
+                </a>
+                <ul class="dropdown-menu">
+                @foreach (App\Models\Category::whereHas('posts')->get()->sortBy('category') as $category)
+                <li><a class="dropdown-item" href="{{url('categories', ['id'=>$category->id])}}">{{$category->category}}</a></li>
+                @endforeach
+                </ul>
+            </li>
+            <a class="nav-link" href="/authors">Users</a>
+            <a class="nav-link" href="/dashboard">Dashboard</a>
+            <a class="nav-link" href="/logs">Logs</a>
 
-          <li class="nav-item dropdown btn btn-sm btn-light">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              {{auth()->user()->name}}
-            </a>
-            <ul class="dropdown-menu">
-             
-              <li><a class="dropdown-item" href="{{url('/user/create-post')}}">{{ __('Create Post') }}</a></li> 
-              <li><a class="dropdown-item" href="{{url('authors', ['id'=>auth()->user()->id])}}">{{ __('My Posts') }}</a></li> 
-              <li><a class="dropdown-item" href="{{('/logout')}}">{{ __('Logout') }}</a></li> 
-            </ul>
-          </li>
+            <li class="nav-item dropdown btn btn-sm btn-light">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                {{auth()->user()->name}}
+                </a>
+                <ul class="dropdown-menu">
+
+                <li><a class="dropdown-item" href="{{url('/user/create-post')}}">{{ __('Create Post') }}</a></li>
+                <li><a class="dropdown-item" href="{{url('authors', ['id'=>auth()->user()->id])}}">{{ __('My Posts') }}</a></li>
+                <li><a class="dropdown-item" href="{{('/logout')}}">{{ __('Logout') }}</a></li>
+                </ul>
+            </li>
+
+            @else
+
+            <a class="nav-link" href="/">Home</a>
+            <a class="nav-link" href="/home">Posts</a>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Categories
+                </a>
+                <ul class="dropdown-menu">
+                @foreach (App\Models\Category::whereHas('posts')->get()->sortBy('category') as $category)
+                <li><a class="dropdown-item" href="{{url('categories', ['id'=>$category->id])}}">{{$category->category}}</a></li>
+                @endforeach
+                </ul>
+            </li>
+            <a class="nav-link" href="/authors">Users</a>
+            <a class="nav-link" href="/dashboard">Dashboard</a>
+            <a class="nav-link" href="/logs">Logs</a>
+
+            <li class="nav-item dropdown btn btn-sm btn-light">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                {{auth()->user()->name}}
+                </a>
+                <ul class="dropdown-menu">
+
+                <li><a class="dropdown-item" href="{{url('/user/create-post')}}">{{ __('Create Post') }}</a></li>
+                <li><a class="dropdown-item" href="{{url('authors', ['id'=>auth()->user()->id])}}">{{ __('My Posts') }}</a></li>
+                <li><a class="dropdown-item" href="{{('/logout')}}">{{ __('Logout') }}</a></li>
+                </ul>
+            </li>
+
+
+            @endif
+
 
           {{-- <a class="nav-link btn btn-danger" href="{{'/logout'}}">Logout</a>   --}}
           @else
+
           <a class="nav-link" href="/">Home</a>
           <a class="nav-link" href="/home">Posts</a>
           <li class="nav-item dropdown">
@@ -46,16 +83,16 @@
             </a>
             <ul class="dropdown-menu">
               @foreach (App\Models\Category::whereHas('posts')->get()->sortBy('category') as $category)
-              <li><a class="dropdown-item" href="{{url('categories', ['id'=>$category->id])}}">{{$category->category}}</a></li> 
+              <li><a class="dropdown-item" href="{{url('categories', ['id'=>$category->id])}}">{{$category->category}}</a></li>
               @endforeach
             </ul>
           </li>
-          <a class="nav-link" href="/authors">Authors</a>
-          <a class="nav-link btn btn-sm bg-light" href="/login">Login</a> 
+          <a class="nav-link" href="/authors">Users</a>
+          <a class="nav-link btn btn-sm bg-light" href="/login">Login</a>
           <a class="nav-link btn btn-sm" href="/register">Register</a>
-              
+
           @endif
-          
+
         </div>
       </div>
     </div>
@@ -66,7 +103,7 @@
     color: yellow;
     font-weight: bold;
   }
-  /* #nv1{
+  #nv1{
     background-image: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet);
-  } */
+  }
 </style>

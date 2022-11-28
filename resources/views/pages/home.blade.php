@@ -4,7 +4,7 @@
 
 <div class="container">
   <div class="row">
-      <div class="col">
+      {{-- <div class="col">
         <select class="form-select" id="category" name="category" wire:model.lazy='category'>
             <option value="all">All</option>
             <option value="Adventure">Adventure</option>
@@ -16,12 +16,12 @@
             <option value="Religion">Religion</option>
             <option value="Romance">Romance</option>
         </select>
-      </div>
+      </div> --}}
 
-      <div class="col">
+      <div class="col-md-8 offset-md-2 my-2">
         {{-- <input type="text" class="form-control" placeholder="Search" wire:model="search">  --}}
         <form action="{{route('home')}}" method="GET" role="search">
-            <input class="form-control" name="post" id="post" type="text" placeholder="Search">
+            <input class="form-control" name="post" id="post" type="text" placeholder="Search Post Only">
         </form>
       </div>
   </div>
@@ -34,13 +34,13 @@
     <div class="row" style="height: 105vh; overflow: auto">
     @foreach ($posts as $post)
     <div class="col-md-4 mt-1">
-    
+
         <div class="card {{$post->user->gender === 'female'? 'f1' : 'm1'}}" >
             <div class="card-header">
                 <nav class="navbar navbar-expand-lg text-info mb-2">
                     <div class="container-fluid">
                       <a class="navbar-brand" href="">{{$post->user->name}}</a>
-                     
+
                       <div class="collapse navbar-collapse" id="navbarNavAlt">
                         <div class="navbar-nav ms-auto">
                           <li class="nav-item dropdown">
@@ -52,14 +52,10 @@
                               <li><a class="dropdown-item" href="{{url('authors', ['id'=>$user->id])}}">{{$user->name}}</a></li>
                               @endforeach
 
-
-                              {{-- @foreach (App\Models\Category::whereHas('posts')->get()->sortBy('category') as $category)
-                              <li><a class="dropdown-item" href="{{url('categories', ['id'=>$category->id])}}">{{$category->category}}</a></li> 
-                              @endforeach --}}
                             </ul>
                           </li>
-        
-                          
+
+
                         </div>
                       </div>
                     </div>
@@ -71,16 +67,16 @@
                     <h4>{{$post->post}}</h4>
                 </div>
             </div>
-            
+
             <div class="card-footer">
                 <p>Published: {{$post->created_at}}</p>
             </div>
         </div>
-   
+
     </div>
     @endforeach
 </div>
-</div> 
+</div>
     <div class="offset-md-5 mt-3">
         {{ $posts->links() }}
     </div>
@@ -89,7 +85,7 @@
 
 <style>
     .f1{
-        background-color: lightpink; 
+        background-color: lightpink;
     }
     .card .f1:hover{
         background-color: rgb(224, 149, 149);

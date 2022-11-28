@@ -8,11 +8,11 @@ use Livewire\Component;
 
 class Create extends Component
 {
-   
+
     public $name, $email, $address, $contact_number, $department, $year_level;
 
     public function addStudent(){
-     
+
             $this->validate([
                 'name'              => ['required','string','max:255'],
                 'email'             => ['required','email','unique:students'],
@@ -21,7 +21,7 @@ class Create extends Component
                 'department'        => ['required','string','max:255'],
                 'year_level'        => ['required','numeric','min:1', 'max:4'],
             ]);
-    
+
             Student::create([
                 'name'              => $this->name,
                 'email'             => $this->email,
@@ -40,8 +40,8 @@ class Create extends Component
     public function updated($propertyEmail)
     {
         $this->validateOnly($propertyEmail, [
-            'email'             => ['required','email','unique:students'],
-            
+            'email' => ['required','email','unique:students'],
+
         ]);
     }
 

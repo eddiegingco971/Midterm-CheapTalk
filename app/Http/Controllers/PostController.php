@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\UserLog;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\User;
@@ -45,7 +46,7 @@ class PostController extends Controller
     }
 
     public function byCategory(Category $category)
-    {   
+    {
         $posts = Post::where('category_id', $category->id)->orderBy('created_at', 'desc')->simplePaginate(6);
         return view('pages.category', compact('posts', 'category'));
     }
@@ -64,7 +65,7 @@ class PostController extends Controller
     public function create()
     {
         $categories = Category::all()->sortBy('category');
-        return view('pages.users.create-post', compact('categories'));    
+        return view('pages.users.create-post', compact('categories'));
     }
 
     /**
@@ -79,6 +80,7 @@ class PostController extends Controller
             'category_id'   =>  'required',
             'post'          =>  'required|string|max:255'
         ]);
+
         Post::create($request->all());
         // return back()->with('status', 'Post published successfully.');
         return redirect('home')->with('status', 'Post published successfully.');

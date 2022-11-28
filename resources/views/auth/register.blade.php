@@ -14,10 +14,10 @@
             <div class="alert alert-danger">
                  {{session('error')}}
              </div>
-            @endif 
+            @endif
 
             <div class="card mt-3">
-                <div class="card-header bg-info text-white text-center">
+                <div class="card-header bg-info text-white text-center" id="nv1">
                     <h3 class="card-title">Register</h3>
                     </div>
                     <div class="card-body">
@@ -70,12 +70,16 @@
                                 <button class="btn btn-primary" type="submit">Register</button>
                             </div>
 
-                            
+
                         </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-  
+    <style>
+        #nv1{
+            background-image: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet);
+          }
+        </style>
 @endsection
